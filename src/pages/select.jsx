@@ -7,6 +7,7 @@ import LawyerIcon from '../assets/lawyer.png';
 import ClientIcon from '../assets/client.png';
 import CheckboxAnimation from '../assets/checkmark.json'; 
 import { Link } from "react-router-dom";
+import { setAcessor } from "../utils/setAccessor";
 
 const Select = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Select = () => {
 
   const handleButtonClick = (role) => {
     setSelectedRole(role);
+    setAcessor(role)
   };
 
   const handleContinueClick = () => {

@@ -8,27 +8,47 @@ import Client from "./pages/client";
 import Select from "./pages/select";
 import { getAcessor } from "./utils/getAccessor";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Web3ContextProvider from "./Web3ContextProvider";
+import Web3ContextProvider, { useWeb3Context } from "./Web3ContextProvider";
 import { useAddress } from "@thirdweb-dev/react";
+import User from "./pages/user";
+
 function App() {
-  const [accessor] = useState(() => getAcessor());
-  const address = useAddress()
+  const address = useAddress();
   return (
     <>
       <div className="sticky top-0">
         <Navbar />
       </div>
-        <Web3ContextProvider>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/share" element={<Share />} />
-            <Route path="/lawyer" element={<Lawyer />} />
-            <Route path="/client" element={<Client />} />
-            <Route path="/judge" element={<Judge />} />
-            {address && <Route path="/select" element={accessor?<Navigate to="share"/>:<Select />} />}
-          </Routes>
-        </Web3ContextProvider>
+      <Web3ContextProvider>
+        {address ? <AuthenticatedRoutes /> : <NonAuthenticatedRoutes />}
+      </Web3ContextProvider>
     </>
+  );
+}
+
+function AuthenticatedRoutes() {
+  const { accessor } = useWeb3Context();
+  return (
+    // now the home route will be the select
+    <Routes>
+      <Route
+        path="/"
+        element={accessor ? <User /> : <Select />}
+      />
+      <Route path="/share" element={<Share />} />
+      {/* on role basis of the accessor the user is forwarded to /lawyer,/client,/judge */}
+      <Route path="/lawyer" element={<Lawyer />} />
+      <Route path="/client" element={<Client />} />
+      <Route path="/judge" element={<Judge />} />
+    </Routes>
+  );
+}
+
+function NonAuthenticatedRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   );
 }
 

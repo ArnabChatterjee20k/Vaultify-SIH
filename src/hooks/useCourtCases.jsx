@@ -1,20 +1,21 @@
-import { useContract , useSigner} from "@thirdweb-dev/react"
+import { useSigner} from "@thirdweb-dev/react"
+import { Contract } from "ethers"
 import { abi,contractAddress} from "../data"
 import { useState } from "react"
 
 export default function useCourtCases() {
     const signer = useSigner()
-    const {contract} = useContract(contractAddress,abi,signer)
+    const contract = new Contract(contractAddress,abi,signer)
     const [courtCases,setCourtCases] = useState([])
     const [files,setFiles] = useState([])
 
     async function openCourtCases(id,customCaseName){
-        await contract.openCourtCases("1")
+        await contract.openCourtCases(id,customCaseName)
     }
 
     async function getCourtCases(){
-        const cases = contract.getCourtCasesOfUser()
-        console.log({cases})
+        const cases = await contract.getCourtCasesOfUser()
+        setCourtCases(cases)
     }
-  return {openCourtCases,getCourtCases}
+  return {openCourtCases,courtCases,getCourtCases}
 }
