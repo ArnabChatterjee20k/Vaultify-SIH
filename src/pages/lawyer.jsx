@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const Lawyer = () => {
 
   return (
-    <div id="/lawyer" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-[#0E0A2A] via-[#12196B] to-[#0E0A2A] text-white overflow-hidden">
+    <div id="/lawyer" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-blue-950 via-pink-700 to-blue-950 text-white overflow-hidden">
       <div className="w-full p-8">
         {/* Logo */}
         <div className="mb-8 ml-8">

@@ -13,7 +13,7 @@ import MetaMaskIcon from '../assets/metamask-icon.svg'
 const Client = () => {
 
   return (
-    <div id="/client" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-[#0E0A2A] via-[#12196B] to-[#0E0A2A] text-white overflow-hidden">
+    <div id="/client" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-black via-green-600 to-black text-white overflow-hidden">
       <div className="w-full p-8">
         {/* Logo */}
         <div className="mb-8 ml-8">
@@ -41,7 +41,7 @@ const Client = () => {
             <div className="flex flex-col lg:flex-row justify-between">
                 <div className="flex flex-row">
                     <button
-                      className="p-3 text-xl w-60 lg:w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-pink-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
+                      className="p-3 text-xl w-60 lg:w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-blue-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
                     >
                       Upload Files
                       <RiUpload2Fill className="ml-2" />
@@ -54,7 +54,7 @@ const Client = () => {
                 </div>
                     <div className="flex">
                         <button
-                          className="p-3 text-xl w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-pink-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
+                          className="p-3 text-xl w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-blue-500 to-green-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
                         >
                           Show Case ID
                           <RiEyeFill className="ml-2" />
