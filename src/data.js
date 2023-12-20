@@ -1,4 +1,4 @@
-export const contractAddress = "0xb24AeBB069399b57aF693266c90F77b7DF37cF64";
+export const contractAddress = "0xB69137FCB0AA05EA4496bF9AAF8813D3893d17dB";
 export const thirdWebConfig = {
   id: "e743a17cfd6b5124891d6b70e605acd9",
   secret:

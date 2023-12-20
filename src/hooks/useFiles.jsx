@@ -9,6 +9,7 @@ export function useFiles() {
 
   async function getFiles(id) {
     const data = await contract.getFiles(id);
+    console.log({data})
     setFiles(data)
   }
 

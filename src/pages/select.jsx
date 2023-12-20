@@ -13,20 +13,21 @@ import {useWeb3Context} from "../Web3ContextProvider"
 const Select = () => {
   const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState(null);
+  const [status,setStatus] = useState()
   const {contract} = useWeb3Context()
   const handleButtonClick = (role) => {
-    setSelectedRole(role);
-    setAcessor(role);
+    setSelectedRole(role.toLowerCase());
   };
 
-  const handleContinueClick = async() => {
-    await contract.registerUser("testUser",selectedRole);
+  const handleContinueClick = async(authority) => {
+    setAcessor(selectedRole.toLowerCase());
+    await contract.registerUser("testUser",authority.toLowerCase());
     // Check the selected role and redirect accordingly
     navigate("/");
   };
 
   const renderAnimation = (role) => {
-    if (selectedRole === role) {
+    if (selectedRole === role.toLowerCase()) {
       return (
         <div className="absolute top-10 left-0 w-full h-full flex items-center justify-center">
           <Lottie animationData={CheckboxAnimation} loop={false} />
@@ -103,7 +104,7 @@ const Select = () => {
               <div className="mt-4 text-center">
                 <button
                   className="text-xl bg-blue-500 text-white px-4 py-2 rounded mt-4"
-                  onClick={handleContinueClick}
+                  onClick={()=>handleContinueClick(selectedRole)}
                 >
                   Continue
                 </button>
