@@ -14,7 +14,7 @@ import FileViewer from "../components/FilesViewer"
 const Client = () => {
   const nav = useNavigate()
   return (
-    <div id="/client" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-black via-green-600 to-black text-white overflow-hidden">
+    <div id="/client" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-purple-950 via-green-950 to-blue-950 text-white overflow-hidden">
       <div className="w-full p-8">
         {/* Logo */}
         <div className="mb-8 ml-8">
