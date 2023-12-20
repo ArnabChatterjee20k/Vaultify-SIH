@@ -8,10 +8,11 @@ import {
 import { FaShareAlt } from "react-icons/fa";
 import VaultifyIcon from '../assets/vaultify.png'
 import MetaMaskIcon from '../assets/metamask-icon.svg'
-
+import { useNavigate } from "react-router";
+import FileViewer from "../components/FilesViewer"
 
 const Client = () => {
-
+  const nav = useNavigate()
   return (
     <div id="/client" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-black via-green-600 to-black text-white overflow-hidden">
       <div className="w-full p-8">
@@ -29,7 +30,7 @@ const Client = () => {
                       <div className="flex flex-row ml-4"><img src={MetaMaskIcon} alt="metamask" className="w-6 h-6 mr-2" /><h2>0xFabCdeFGIjlMnpQStUvWx2386wbjA</h2></div>
                   </div>
                   <div className="lg:absolute right-16 mr-1 mt-10">
-                      <button
+                      <button onClick={()=>nav("/upload")}
                               className="p-3 text-xl w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-pink-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
                             >
                               Share with LAWYER
@@ -41,6 +42,7 @@ const Client = () => {
             <div className="flex flex-col lg:flex-row justify-between">
                 <div className="flex flex-row">
                     <button
+                      onClick={()=>nav("/upload")}
                       className="p-3 text-xl w-60 lg:w-80 mt-4 lg:mt-10 flex items-center mr-2 bg-gradient-to-r from-blue-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none"
                     >
                       Upload Files
@@ -65,9 +67,9 @@ const Client = () => {
 
           {/* Previously Shared with Section */}
           <div className="mt-6">
-
+          <FileViewer/>
             {/* Manage Accessibility and Search */}
-            <div className="w-full p-8 bg-white rounded-3xl shadow-lg min-h-[500px]" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
+            {/* <div className="w-full p-8 bg-white rounded-3xl shadow-lg min-h-[500px]" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
               <div className="flex flex-col md:flex-row items-center mb-2">
                   <input
                     type="text"
@@ -79,7 +81,7 @@ const Client = () => {
                     <RiSearch2Line color="#fff" />
                   </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
