@@ -9,20 +9,20 @@ import CheckboxAnimation from "../assets/checkmark.json";
 import { Link } from "react-router-dom";
 import { setAcessor } from "../utils/setAccessor";
 import { goToSpecificAccessor } from "../utils/goToSpecificAccessor";
-
+import {useWeb3Context} from "../Web3ContextProvider"
 const Select = () => {
   const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState(null);
-
+  const {contract} = useWeb3Context()
   const handleButtonClick = (role) => {
     setSelectedRole(role);
     setAcessor(role);
   };
 
-  const handleContinueClick = () => {
+  const handleContinueClick = async() => {
+    await contract.registerUser("testUser",selectedRole);
     // Check the selected role and redirect accordingly
-    const accessor = goToSpecificAccessor();
-    navigate(accessor);
+    navigate("/");
   };
 
   const renderAnimation = (role) => {

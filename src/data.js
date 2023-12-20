@@ -1,4 +1,4 @@
-export const contractAddress = "0x452F22AC8251dd0105Fdc1DbD466fecFB6c8a14b";
+export const contractAddress = "0xb24AeBB069399b57aF693266c90F77b7DF37cF64";
 export const thirdWebConfig = {
   id: "e743a17cfd6b5124891d6b70e605acd9",
   secret:
@@ -197,4 +197,4 @@ export const abi = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+]

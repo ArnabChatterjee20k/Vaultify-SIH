@@ -9,6 +9,7 @@ import { FaShareAlt } from "react-icons/fa";
 import VaultifyIcon from "../assets/vaultify.png";
 import MetaMaskIcon from "../assets/metamask-icon.svg";
 import { useNavigate } from "react-router";
+import FilesViewer from "../components/FilesViewer";
 
 
 const Lawyer = () => {
@@ -78,8 +79,9 @@ const Lawyer = () => {
 
           {/* Previously Shared with Section */}
           <div className="mt-6">
+            <FilesViewer/>
             {/* Manage Accessibility and Search */}
-            <div
+            {/* <div
               className="w-full p-8 bg-white rounded-3xl shadow-lg min-h-[500px]"
               style={{ background: "rgba(255, 255, 255, 0.1)" }}
             >
@@ -94,7 +96,7 @@ const Lawyer = () => {
                   <RiSearch2Line color="#fff" />
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
