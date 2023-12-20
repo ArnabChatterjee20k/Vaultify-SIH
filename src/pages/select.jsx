@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Lottie from 'lottie-react';
-import VaultifyIcon from '../assets/vaultify.png';
-import JudgeIcon from '../assets/judge.png';
-import LawyerIcon from '../assets/lawyer.png';
-import ClientIcon from '../assets/client.png';
-import CheckboxAnimation from '../assets/checkmark.json'; 
+import Lottie from "lottie-react";
+import VaultifyIcon from "../assets/vaultify.png";
+import JudgeIcon from "../assets/judge.png";
+import LawyerIcon from "../assets/lawyer.png";
+import ClientIcon from "../assets/client.png";
+import CheckboxAnimation from "../assets/checkmark.json";
 import { Link } from "react-router-dom";
 import { setAcessor } from "../utils/setAccessor";
+import { goToSpecificAccessor } from "../utils/goToSpecificAccessor";
 
 const Select = () => {
   const navigate = useNavigate();
@@ -15,25 +16,13 @@ const Select = () => {
 
   const handleButtonClick = (role) => {
     setSelectedRole(role);
-    setAcessor(role)
+    setAcessor(role);
   };
 
   const handleContinueClick = () => {
     // Check the selected role and redirect accordingly
-    switch (selectedRole) {
-      case "Lawyer":
-        navigate("/lawyer"); // Replace with your lawyer route
-        break;
-      case "Client":
-        navigate("/client"); // Replace with your client route
-        break;
-      case "Judge":
-        navigate("/judge"); // Replace with your judge route
-        break;
-      default:
-        // Handle default case or show an error message
-        break;
-    }
+    const accessor = goToSpecificAccessor();
+    navigate(accessor);
   };
 
   const renderAnimation = (role) => {
@@ -48,7 +37,10 @@ const Select = () => {
   };
 
   return (
-    <div id="/select" className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-[#0E0A2A] via-[#12196B] to-[#0E0A2A] text-white overflow-hidden">
+    <div
+      id="/select"
+      className="min-h-screen flex items-start justify-start bg-gradient-to-tr from-[#0E0A2A] via-[#12196B] to-[#0E0A2A] text-white overflow-hidden"
+    >
       <div className="w-full p-8">
         {/* Logo */}
         <div className="mb-8 ml-8">
@@ -68,19 +60,40 @@ const Select = () => {
           {/* Previously Shared with Section */}
           <div className="mt-6">
             {/* Manage Accessibility and Search */}
-            <div className="w-full p-8 bg-white flex flex-col items-center lg:flex-row md:justify-evenly rounded-3xl shadow-lg min-h-[500px]" style={{ background: 'rgba(255, 255, 255, 0.1)' }}>
-              <button onClick={() => handleButtonClick("Lawyer")} className="relative">
-                <span className="text-4xl">I'm a<br /> <span className="text-yellow-300 font-bold">Lawyer</span></span>
+            <div
+              className="w-full p-8 bg-white flex flex-col items-center lg:flex-row md:justify-evenly rounded-3xl shadow-lg min-h-[500px]"
+              style={{ background: "rgba(255, 255, 255, 0.1)" }}
+            >
+              <button
+                onClick={() => handleButtonClick("Lawyer")}
+                className="relative"
+              >
+                <span className="text-4xl">
+                  I'm a<br />{" "}
+                  <span className="text-yellow-300 font-bold">Lawyer</span>
+                </span>
                 {renderAnimation("Lawyer")}
                 <img src={LawyerIcon} alt="Logo" className="w-60 h-60" />
               </button>
-              <button onClick={() => handleButtonClick("Client")} className="relative">
-                <span className="text-4xl">I'm a<br /> <span className="text-yellow-300 font-bold">Client</span></span>
+              <button
+                onClick={() => handleButtonClick("Client")}
+                className="relative"
+              >
+                <span className="text-4xl">
+                  I'm a<br />{" "}
+                  <span className="text-yellow-300 font-bold">Client</span>
+                </span>
                 {renderAnimation("Client")}
                 <img src={ClientIcon} alt="Logo" className="w-60 h-60" />
               </button>
-              <button onClick={() => handleButtonClick("Judge")} className="relative">
-                <span className="text-4xl">I'm a<br /> <span className="text-yellow-300 font-bold">Judge</span></span>
+              <button
+                onClick={() => handleButtonClick("Judge")}
+                className="relative"
+              >
+                <span className="text-4xl">
+                  I'm a<br />{" "}
+                  <span className="text-yellow-300 font-bold">Judge</span>
+                </span>
                 {renderAnimation("Judge")}
                 <img src={JudgeIcon} alt="Logo" className="w-60 h-60" />
               </button>
@@ -88,7 +101,10 @@ const Select = () => {
 
             {selectedRole && (
               <div className="mt-4 text-center">
-                <button className="text-xl bg-blue-500 text-white px-4 py-2 rounded mt-4" onClick={handleContinueClick}>
+                <button
+                  className="text-xl bg-blue-500 text-white px-4 py-2 rounded mt-4"
+                  onClick={handleContinueClick}
+                >
                   Continue
                 </button>
               </div>

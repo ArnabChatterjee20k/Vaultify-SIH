@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Web3ContextProvider, { useWeb3Context } from "./Web3ContextProvider";
 import { useAddress } from "@thirdweb-dev/react";
 import User from "./pages/user";
+import FileUpload from "./pages/FileUpload";
 
 function App() {
   const address = useAddress();
@@ -37,9 +38,10 @@ function AuthenticatedRoutes() {
       />
       <Route path="/share" element={<Share />} />
       {/* on role basis of the accessor the user is forwarded to /lawyer,/client,/judge */}
-      <Route path="/lawyer" element={<Lawyer />} />
-      <Route path="/client" element={<Client />} />
-      <Route path="/judge" element={<Judge />} />
+      <Route path="/lawyer/:caseId" element={<Lawyer />} />
+      <Route path="/client/:caseId" element={<Client />} />
+      <Route path="/judge/:caseId" element={<Judge />} />
+      <Route path="/upload" element={<FileUpload />} />
     </Routes>
   );
 }

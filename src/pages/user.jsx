@@ -6,7 +6,8 @@ import MetaMaskIcon from "../assets/metamask-icon.svg";
 import { useWeb3Context } from "../Web3ContextProvider";
 import AddFolderModal from "../components/AddFolderModal";
 import useCourtCases from "../hooks/useCourtCases";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+
 
 const User = () => {
   const { accessor } = useWeb3Context();
@@ -66,7 +67,7 @@ const User = () => {
             style={{ background: "rgba(255, 255, 255, 0.1)" }}
           >
             {courtCases.map(([id, name]) => (
-              <Link className="text-white text-2xl hover:underline">
+              <Link to={`${accessor}/${id}`} className="text-white text-2xl hover:underline">
                 case-{name}
               </Link>
             ))}
