@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   RiSearch2Line,
   RiRefreshLine,
@@ -13,6 +13,28 @@ import FilesViewer from "../components/FilesViewer";
 
 
 const Lawyer = () => {
+  const [caseId, setCaseId] = useState()
+  function search(image) {
+    function searchForEndpoint(searchTerm) {
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        const anchorTags = document.querySelectorAll('a');
+        for (let anchor of anchorTags) {
+            const href = anchor.getAttribute('href');
+            if (href.toLowerCase().includes(lowerCaseSearchTerm)) {
+                return anchor.href;
+            }
+        }
+        return null;
+    }
+    const result = searchForEndpoint(image);
+
+    if (result) {
+        window.location.href = result;
+    } else {
+        alert('Not found');
+    }
+}
+
   const nav = useNavigate()
   return (
     <div
@@ -60,7 +82,7 @@ const Lawyer = () => {
                   Upload Files
                   <RiUpload2Fill className="ml-2" />
                 </button>
-                <button className="w-20 text-2xl mt-4 lg:mt-10 flex items-center  bg-gradient-to-r from-pink-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none">
+                <button className="w-20 text-2xl mt-4 lg:mt-10 flex items-center  bg-gradient-to-r from-pink-500 to-purple-800 hover:bg-gradient-to-r hover:from-pink-700 hover:to-purple-900 rounded-2xl justify-center focus:outline-none" onClick={()=>window.location.reload()}>
                   <RiRefreshLine />
                 </button>
               </div>
@@ -79,9 +101,8 @@ const Lawyer = () => {
 
           {/* Previously Shared with Section */}
           <div className="mt-6">
-            <FilesViewer/>
             {/* Manage Accessibility and Search */}
-            {/* <div
+            <div
               className="w-full p-8 bg-white rounded-3xl shadow-lg min-h-[500px]"
               style={{ background: "rgba(255, 255, 255, 0.1)" }}
             >
@@ -89,14 +110,18 @@ const Lawyer = () => {
                 <input
                   type="text"
                   placeholder="Search your shared files here..."
-                  className="lg:w-full h-10 px-10 py-1 border rounded-xl border-none focus:outline-none"
-                  style={{ background: "#4C4966", color: "#fff" }}
+                  className="lg:w-full h-10 px-10 py-1 border rounded-xl border-none focus:outline-none mb-10"
+                  style={{ background: "#fff", color: "#000" }}
+                  onChange={(e)=>setCaseId(e.target.value)}
+                  onKeyDown={(e)=>{
+                    if(e.keyCode===13){
+                      search(caseId)
+                    }
+                  }}
                 />
-                <span className="absolute top-3 left-3">
-                  <RiSearch2Line color="#fff" />
-                </span>
               </div>
-            </div> */}
+              <FilesViewer/>
+            </div>
           </div>
         </div>
       </div>

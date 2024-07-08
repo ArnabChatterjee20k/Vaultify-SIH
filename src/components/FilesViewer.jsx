@@ -46,7 +46,7 @@ export default function FilesViewer() {
     }
   }
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="grid grid-cols-4 gap-5">
       {files.map(([ipfs]) => (
         <div className="bg-white w-80 cursor-pointer flex justify-center items-center">
           <a target="_blank" href={storage.resolveScheme(ipfs)}>
